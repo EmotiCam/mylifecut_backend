@@ -4,10 +4,11 @@
     "profile_name": "googit",
     "project_name": "mylifecut-backe",
     "runtime": "python3.7",
-    "s3_bucket": "mylifecut"
-  },
-  "vpc_config": {
-    "SubnetIds": ["subnet-c903c7b2", "subnet-a165d2ed", "subnet-9f1f5ff7"],
-    "SecurityGroupIds": ["sg-5b8da330"]
+    "s3_bucket": "mylifecut",
+    "remote_env": "s3://my-life-cut-bucket/configs/zappa-config.json",
+    "vpc_config": {
+      "SubnetIds": ["subnet-c903c7b2", "subnet-a165d2ed", "subnet-9f1f5ff7"],
+      "SecurityGroupIds": ["sg-5b8da330"]
+    }
   }
 }
