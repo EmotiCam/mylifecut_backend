@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import IsAuthenticated
 
 from core.api.serializers import (
     ProfileSerializer,
@@ -13,10 +13,10 @@ from core.models import Profile, Emotion, Picture, Statement
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-    permission_classes = (AllowAny,)
+    permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
-        return self.queryset.filter(user=self.request.user)
+        return self.queryset.filter(user=self.request.uid)
 
 
 class EmotionViewSet(viewsets.ModelViewSet):
@@ -25,7 +25,7 @@ class EmotionViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
-        return self.queryset.filter(user=self.request.user)
+        return self.queryset.filter(user=self.request.uid)
 
 
 class PictureViewSet(viewsets.ModelViewSet):
@@ -34,7 +34,7 @@ class PictureViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
-        return self.queryset.filter(user=self.request.user)
+        return self.queryset.filter(user=self.request.uid)
 
 
 class StatementViewSet(viewsets.ModelViewSet):
@@ -43,4 +43,4 @@ class StatementViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
-        return self.queryset.filter(user=self.request.user)
+        return self.queryset.filter(user=self.request.uid)
