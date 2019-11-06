@@ -1,11 +1,18 @@
 import os
 
+import pymysql
+
+# Mysql install
+pymysql.install_as_MySQLdb()
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
+
+# DEV mode or PRODUCTION mode
+IS_DEV_MODE = os.environ.get("DJANGO_ENV") == "development"
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "xa!0psktato=%6x*2fjt4)+x(ryyk-i$q14o#)8qktk4g=#tz0"
