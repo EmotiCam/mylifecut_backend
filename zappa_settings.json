@@ -1,0 +1,9 @@
+{
+    "dev": {
+        "django_settings": "app.settings",
+        "profile_name": "googit",
+        "project_name": "mylifecut-backe",
+        "runtime": "python3.7",
+        "s3_bucket": "mylifecut"
+    }
+}
