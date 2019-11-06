@@ -10,3 +10,5 @@ router.register("profiles", views.ProfileViewSet)
 router.register("emotions", views.EmotionViewSet)
 router.register("pictures", views.PictureViewSet)
 router.register("statements", views.StatementViewSet)
+
+urlpatterns = router.urls
