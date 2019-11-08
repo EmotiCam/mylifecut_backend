@@ -5,7 +5,13 @@
     "project_name": "mylifecut-backe",
     "runtime": "python3.7",
     "s3_bucket": "mylifecut",
-    "remote_env": "s3://my-life-cut-bucket/configs/zappa-config.json",
+    "environment_variables": {
+      "DB_NAME": "main",
+      "DB_USER": "admin",
+      "DB_PASSWORD": "43f61d3ea9644c9f85d91fe3b9e94783",
+      "DB_HOST": "mylifecut.cgnotnx8kv1p.ap-northeast-2.rds.amazonaws.com",
+      "DB_PORT": "3306"
+    },
     "vpc_config": {
       "SubnetIds": ["subnet-c903c7b2", "subnet-a165d2ed", "subnet-9f1f5ff7"],
       "SecurityGroupIds": ["sg-5b8da330"]

@@ -18,9 +18,9 @@ IS_DEV_MODE = os.environ.get("DJANGO_ENV") == "development"
 SECRET_KEY = "xa!0psktato=%6x*2fjt4)+x(ryyk-i$q14o#)8qktk4g=#tz0"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = IS_DEV_MODE
 
-ALLOWED_HOSTS = ["127.0.0.1"]
+ALLOWED_HOSTS = ["127.0.0.1", "*"]
 
 
 # Application definition

@@ -210,3 +210,4 @@ modules.xml
 # virtual environment
 venv/
 env/
+zappa_settings.json
