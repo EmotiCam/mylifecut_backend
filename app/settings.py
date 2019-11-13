@@ -20,7 +20,10 @@ SECRET_KEY = "xa!0psktato=%6x*2fjt4)+x(ryyk-i$q14o#)8qktk4g=#tz0"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = IS_DEV_MODE
 
-ALLOWED_HOSTS = ["127.0.0.1", "*"]
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "https://fzfv1bjqai.execute-api.ap-northeast-2.amazonaws.com",
+]
 
 
 # Application definition
@@ -102,6 +105,12 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication"
+    ]
+}
 
 CORS_ORIGIN_ALLOW_ALL = True
 

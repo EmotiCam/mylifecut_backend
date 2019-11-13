@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 class Profile(models.Model):
@@ -12,8 +15,7 @@ class Profile(models.Model):
         (OTHER, "OTHER"),
         (SECRET, "SECRET"),
     ]
-
-    uid = models.PositiveIntegerField(primary_key=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     email = models.EmailField(null=True)
     name = models.CharField(max_length=30, null=False)
     nickname = models.CharField(max_length=30, null=False)
@@ -21,7 +23,7 @@ class Profile(models.Model):
 
 
 class Emotion(models.Model):
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     anger = models.FloatField()
     contempt = models.FloatField()
     disgust = models.FloatField()
@@ -34,13 +36,13 @@ class Emotion(models.Model):
 
 
 class Picture(models.Model):
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     url = models.URLField()
     created_at = models.DateTimeField(auto_now=True, auto_now_add=False)
 
 
 class Statement(models.Model):
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     text = models.CharField(max_length=100)
     category = models.CharField(max_length=10)
     default = models.BooleanField(default=False)
