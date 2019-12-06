@@ -19,7 +19,8 @@ class Profile(models.Model):
     email = models.EmailField(null=True)
     name = models.CharField(max_length=30, null=False)
     nickname = models.CharField(max_length=30, null=False)
-    gender = models.CharField(max_length=6, choices=GENDER_CHOICES)
+    gender = models.CharField(max_length=6, choices=GENDER_CHOICES, default=SECRET)
+    comment = models.CharField(max_length=255)
 
 
 class Emotion(models.Model):

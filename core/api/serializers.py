@@ -6,7 +6,8 @@ from core.models import Profile, Emotion, Statement
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ("uid", "email", "name", "nickname", "gender")
+        fields = ("id", "user", "comment", "nickname", "gender")
+        read_only_fields = ("id", "user")
 
 
 class EmotionSerializer(serializers.ModelSerializer):
