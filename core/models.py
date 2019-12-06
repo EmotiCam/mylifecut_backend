@@ -32,12 +32,9 @@ class Emotion(models.Model):
     neutral = models.FloatField()
     sadness = models.FloatField()
     surprise = models.FloatField()
-    created_at = models.DateTimeField(auto_now=True, auto_now_add=False)
-
-
-class Picture(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    url = models.URLField()
+    main_emotion = models.CharField(max_length=15)
+    image_url = models.URLField()
+    comment = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now=True, auto_now_add=False)
 
 
@@ -46,10 +43,3 @@ class Statement(models.Model):
     text = models.CharField(max_length=100)
     category = models.CharField(max_length=10)
     default = models.BooleanField(default=False)
-
-
-class Archive(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ForeignKey(Picture, on_delete=models.CASCADE)
-    comment = models.CharField(max_length=255)
-    created_at = models.DateTimeField(auto_now=True, auto_now_add=False)

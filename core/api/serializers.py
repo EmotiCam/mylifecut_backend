@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from core.models import Profile, Emotion, Picture, Statement
+from core.models import Profile, Emotion, Statement
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -22,16 +22,12 @@ class EmotionSerializer(serializers.ModelSerializer):
             "neutral",
             "sadness",
             "surprise",
+            "main_emotion",
+            "image_url",
+            "comment",
             "created_at",
         )
-        read_only_fields = ("created_at",)
-
-
-class PictureSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Picture
-        fields = ("user", "url", "created_at")
-        read_only_fields = ("created_at",)
+        read_only_fields = ("user", "created_at",)
 
 
 class StatementSerializer(serializers.ModelSerializer):

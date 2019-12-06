@@ -1,13 +1,13 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
 
 from core.api.serializers import (
     ProfileSerializer,
     EmotionSerializer,
-    PictureSerializer,
     StatementSerializer,
 )
-from core.models import Profile, Emotion, Picture, Statement
+from core.models import Profile, Emotion, Statement
 
 
 class ProfileViewSet(viewsets.ModelViewSet):
@@ -21,11 +21,9 @@ class EmotionViewSet(viewsets.ModelViewSet):
     serializer_class = EmotionSerializer
     permission_classes = (IsAuthenticated,)
 
-
-class PictureViewSet(viewsets.ModelViewSet):
-    queryset = Picture.objects.all()
-    serializer_class = PictureSerializer
-    permission_classes = (IsAuthenticated,)
+    def perform_create(self, serializer):
+        """Create a new profile"""
+        serializer.save(user=self.request.user)
 
 
 class StatementViewSet(viewsets.ModelViewSet):
