@@ -35,4 +35,5 @@ class EmotionSerializer(serializers.ModelSerializer):
 class StatementSerializer(serializers.ModelSerializer):
     class Meta:
         model = Statement
-        fields = ("user", "text", "category")
+        fields = ("id", "text", "category")
+        read_only_fields = ("id", "text", "category")
