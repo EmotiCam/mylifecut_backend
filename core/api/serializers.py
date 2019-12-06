@@ -13,6 +13,7 @@ class EmotionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Emotion
         fields = (
+            "id",
             "user",
             "anger",
             "contempt",
@@ -27,7 +28,7 @@ class EmotionSerializer(serializers.ModelSerializer):
             "comment",
             "created_at",
         )
-        read_only_fields = ("user", "created_at",)
+        read_only_fields = ("id", "user", "created_at",)
 
 
 class StatementSerializer(serializers.ModelSerializer):
