@@ -1,7 +1,11 @@
+import json
+import random
+
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from core.api.serializers import (
     ProfileSerializer,
@@ -87,3 +91,41 @@ class StatementViewSet(viewsets.ModelViewSet):
         neutral = Statement.objects.filter(category="surprise")
         serializer = self.get_serializer(neutral, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class SympathyWords(APIView):
+    permission_classes = [AllowAny]
+    authentication_classes = []
+
+    def post(self, request):
+        with open("data/words.json") as word_json:
+            words = json.load(word_json)
+        return_sympathy_word = random.choice(words["sympathy"])
+
+        response_builder = {
+            "version": "2.0",
+            "resultCode": "OK",
+            "output": {
+                "return_sympathy_word": return_sympathy_word,
+            },
+        }
+        return Response(response_builder)
+
+
+class ConsolationWords(APIView):
+    permission_classes = [AllowAny]
+    authentication_classes = []
+
+    def post(self, request):
+        with open("data/words.json") as word_json:
+            words = json.load(word_json)
+        return_consolation_word = random.choice(words["consolation"])
+
+        response_builder = {
+            "version": "2.0",
+            "resultCode": "OK",
+            "output": {
+                "return_consolation_word": return_consolation_word,
+            },
+        }
+        return Response(response_builder)
