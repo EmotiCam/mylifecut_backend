@@ -29,7 +29,11 @@ class EmotionSerializer(serializers.ModelSerializer):
             "comment",
             "created_at",
         )
-        read_only_fields = ("id", "user", "created_at",)
+        read_only_fields = (
+            "id",
+            "user",
+            "created_at",
+        )
 
 
 class StatementSerializer(serializers.ModelSerializer):

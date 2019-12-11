@@ -9,6 +9,9 @@ app_name = "core"
 urlpatterns = [
     path("consolation-words", views.ConsolationWords.as_view()),
     path("sympathy-words", views.SympathyWords.as_view()),
+    path("period-emotion", views.PeriodEmotion.as_view()),
+    path("today-emotion", views.PeriodEmotion.as_view()),
+    path("seven-days-emotion", views.PeriodEmotion.as_view()),
 ]
 
 router = DefaultRouter()

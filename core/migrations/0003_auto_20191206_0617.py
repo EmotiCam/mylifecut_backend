@@ -6,19 +6,28 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0002_auto_20191206_0506'),
+        ("core", "0002_auto_20191206_0506"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='profile',
-            name='comment',
-            field=models.CharField(default='SECRET', max_length=255),
+            model_name="profile",
+            name="comment",
+            field=models.CharField(default="SECRET", max_length=255),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='gender',
-            field=models.CharField(choices=[('MALE', '남자'), ('FEMALE', '여자'), ('OTHER', 'OTHER'), ('SECRET', 'SECRET')], default='SECRET', max_length=6),
+            model_name="profile",
+            name="gender",
+            field=models.CharField(
+                choices=[
+                    ("MALE", "남자"),
+                    ("FEMALE", "여자"),
+                    ("OTHER", "OTHER"),
+                    ("SECRET", "SECRET"),
+                ],
+                default="SECRET",
+                max_length=6,
+            ),
         ),
     ]

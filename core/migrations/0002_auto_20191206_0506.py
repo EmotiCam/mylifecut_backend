@@ -6,44 +6,31 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0001_initial'),
+        ("core", "0001_initial"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='archive',
-            name='image',
-        ),
-        migrations.RemoveField(
-            model_name='archive',
-            name='user',
-        ),
-        migrations.RemoveField(
-            model_name='picture',
-            name='user',
-        ),
+        migrations.RemoveField(model_name="archive", name="image",),
+        migrations.RemoveField(model_name="archive", name="user",),
+        migrations.RemoveField(model_name="picture", name="user",),
         migrations.AddField(
-            model_name='emotion',
-            name='comment',
+            model_name="emotion",
+            name="comment",
             field=models.CharField(default=1, max_length=255),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='emotion',
-            name='image_url',
-            field=models.URLField(default='aa'),
+            model_name="emotion",
+            name="image_url",
+            field=models.URLField(default="aa"),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='emotion',
-            name='main_emotion',
-            field=models.CharField(default='aaa', max_length=15),
+            model_name="emotion",
+            name="main_emotion",
+            field=models.CharField(default="aaa", max_length=15),
             preserve_default=False,
         ),
-        migrations.DeleteModel(
-            name='Archive',
-        ),
-        migrations.DeleteModel(
-            name='Picture',
-        ),
+        migrations.DeleteModel(name="Archive",),
+        migrations.DeleteModel(name="Picture",),
     ]

@@ -15,67 +15,147 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Archive',
+            name="Archive",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('comment', models.CharField(max_length=255)),
-                ('created_at', models.DateTimeField(auto_now=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("comment", models.CharField(max_length=255)),
+                ("created_at", models.DateTimeField(auto_now=True)),
             ],
         ),
         migrations.CreateModel(
-            name='Emotion',
+            name="Emotion",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('anger', models.FloatField()),
-                ('contempt', models.FloatField()),
-                ('disgust', models.FloatField()),
-                ('fear', models.FloatField()),
-                ('happiness', models.FloatField()),
-                ('neutral', models.FloatField()),
-                ('sadness', models.FloatField()),
-                ('surprise', models.FloatField()),
-                ('created_at', models.DateTimeField(auto_now=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("anger", models.FloatField()),
+                ("contempt", models.FloatField()),
+                ("disgust", models.FloatField()),
+                ("fear", models.FloatField()),
+                ("happiness", models.FloatField()),
+                ("neutral", models.FloatField()),
+                ("sadness", models.FloatField()),
+                ("surprise", models.FloatField()),
+                ("created_at", models.DateTimeField(auto_now=True)),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Picture',
+            name="Picture",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('url', models.URLField()),
-                ('created_at', models.DateTimeField(auto_now=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("url", models.URLField()),
+                ("created_at", models.DateTimeField(auto_now=True)),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Profile',
+            name="Profile",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('email', models.EmailField(max_length=254, null=True)),
-                ('name', models.CharField(max_length=30)),
-                ('nickname', models.CharField(max_length=30)),
-                ('gender', models.CharField(choices=[('MALE', '남자'), ('FEMALE', '여자'), ('OTHER', 'OTHER'), ('SECRET', 'SECRET')], max_length=6)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("email", models.EmailField(max_length=254, null=True)),
+                ("name", models.CharField(max_length=30)),
+                ("nickname", models.CharField(max_length=30)),
+                (
+                    "gender",
+                    models.CharField(
+                        choices=[
+                            ("MALE", "남자"),
+                            ("FEMALE", "여자"),
+                            ("OTHER", "OTHER"),
+                            ("SECRET", "SECRET"),
+                        ],
+                        max_length=6,
+                    ),
+                ),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Statement',
+            name="Statement",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('text', models.CharField(max_length=100)),
-                ('category', models.CharField(max_length=10)),
-                ('default', models.BooleanField(default=False)),
-                ('user', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("text", models.CharField(max_length=100)),
+                ("category", models.CharField(max_length=10)),
+                ("default", models.BooleanField(default=False)),
+                (
+                    "user",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='archive',
-            name='image',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.Picture'),
+            model_name="archive",
+            name="image",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to="core.Picture"
+            ),
         ),
         migrations.AddField(
-            model_name='archive',
-            name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            model_name="archive",
+            name="user",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL
+            ),
         ),
     ]
